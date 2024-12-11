@@ -1,0 +1,23 @@
+﻿<Window x:Class="WpfApp1.MessageboxUI_1"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Width="280"
+        Height="310"
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        Background="Transparent"
+        AllowsTransparency="True">
+
+    <Border CornerRadius="8" Background="White">
+        <Path Fill="#5b9bff" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="91" Stroke="Black" Stretch="Fill" StrokeThickness="0" Width="300" Margin="0 -10" Opacity="0.25">
+            <Path.Data>
+                <PathGeometry Figures="M3.0666667,149.86667 C3.0666667,149.86667 27.7,106.56667 38.9,113.5 50.1,120.43334 57.314354,142.8108 62.092132,135.32021 66.86991,127.82963 106.14447,74.325428 118.41643,95.727108 130.68839,117.12879 136.37088,139.60582 148.1399,130.51477 159.90892,121.42372 169.65075,98.428721 178.18839,113.93698 186.72604,129.44524 200.10363,152.975 208.1092,136.93198 216.11476,120.88896 243.74992,52.973485 270.42212,80.781394 297.09431,108.5893 296.3566,128.23455 311.84386,113.16272 327.33111,98.090882 342.15346,77.09797 350.17365,95.399483 358.19384,113.701 344.52229,163.76102 344.52229,163.76102 L3.1668469,165.13674 z"/>
+            </Path.Data>
+        </Path>
+    </Border>
+
+</Window>
