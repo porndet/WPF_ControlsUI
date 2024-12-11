@@ -12,12 +12,50 @@
         Background="Transparent"
         AllowsTransparency="True">
 
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style x:Key="ButtonStyle" TargetType="{x:Type Button}">
+                <Setter Property="Cursor" Value="Hand"/>
+                <Setter Property="Foreground" Value="#FFFFFF"/>
+                <Setter Property="FontFamily" Value="Poppins"/>
+                <Setter Property="FontWeight" Value="SemiBold"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border CornerRadius="6" Width="150" Height="45">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+                                        <GradientStop Color="#66a3ff" Offset="0"></GradientStop>
+                                        <GradientStop Color="#4392fd" Offset="0.8"></GradientStop>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+                                <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
+                            </Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+
     <Border CornerRadius="8" Background="White">
-        <Path Fill="#5b9bff" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="91" Stroke="Black" Stretch="Fill" StrokeThickness="0" Width="300" Margin="0 -10" Opacity="0.25">
-            <Path.Data>
-                <PathGeometry Figures="M3.0666667,149.86667 C3.0666667,149.86667 27.7,106.56667 38.9,113.5 50.1,120.43334 57.314354,142.8108 62.092132,135.32021 66.86991,127.82963 106.14447,74.325428 118.41643,95.727108 130.68839,117.12879 136.37088,139.60582 148.1399,130.51477 159.90892,121.42372 169.65075,98.428721 178.18839,113.93698 186.72604,129.44524 200.10363,152.975 208.1092,136.93198 216.11476,120.88896 243.74992,52.973485 270.42212,80.781394 297.09431,108.5893 296.3566,128.23455 311.84386,113.16272 327.33111,98.090882 342.15346,77.09797 350.17365,95.399483 358.19384,113.701 344.52229,163.76102 344.52229,163.76102 L3.1668469,165.13674 z"/>
-            </Path.Data>
-        </Path>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="2">
+                <Button Style="{StaticResource ButtonStyle}" Content="CONTINUE" VerticalAlignment="Top" HorizontalAlignment="Center"></Button>
+                <Path Fill="#5b9bff" HorizontalAlignment="Center" VerticalAlignment="Bottom" Height="91" Stroke="Black" Stretch="Fill" StrokeThickness="0" Width="300" Margin="0 -10" Opacity="0.25">
+                    <Path.Data>
+                        <PathGeometry Figures="M3.0666667,149.86667 C3.0666667,149.86667 27.7,106.56667 38.9,113.5 50.1,120.43334 57.314354,142.8108 62.092132,135.32021 66.86991,127.82963 106.14447,74.325428 118.41643,95.727108 130.68839,117.12879 136.37088,139.60582 148.1399,130.51477 159.90892,121.42372 169.65075,98.428721 178.18839,113.93698 186.72604,129.44524 200.10363,152.975 208.1092,136.93198 216.11476,120.88896 243.74992,52.973485 270.42212,80.781394 297.09431,108.5893 296.3566,128.23455 311.84386,113.16272 327.33111,98.090882 342.15346,77.09797 350.17365,95.399483 358.19384,113.701 344.52229,163.76102 344.52229,163.76102 L3.1668469,165.13674 z"/>
+                    </Path.Data>
+                </Path>
+            </Grid>
+        </Grid>
     </Border>
 
 </Window>
