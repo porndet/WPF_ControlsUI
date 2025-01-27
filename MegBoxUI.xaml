@@ -202,11 +202,11 @@
             <Border Grid.Row="0" Background="White" CornerRadius="8 8 0 0"></Border>
 
             <Grid Grid.Row="0" Grid.RowSpan="2" Background="Transparent">
-                <Border x:Name="BdText" Margin="0 110 0 10">
+                <Border x:Name="BdText" Margin="0 110 0 0" CornerRadius="0 0 8 8">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                            <GradientStop Offset="0" Color="#616161"></GradientStop>
-                            <GradientStop Offset="0.7" Color="#c4c2c2"></GradientStop>
+                            <GradientStop Offset="0" Color="#10b4fd"></GradientStop>
+                            <GradientStop Offset="0.7" Color="#69deff"></GradientStop>
                         </LinearGradientBrush>
                     </Border.Background>
 
@@ -217,8 +217,8 @@
                 <Border x:Name="BdIcon" CornerRadius="99" Width="75" Height="75" Margin="0 0 0 90" BorderBrush="White" BorderThickness="0">
                     <Border.Background>
                         <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                            <GradientStop Offset="0" Color="#616161"></GradientStop>
-                            <GradientStop Offset="0.7" Color="#c4c2c2"></GradientStop>
+                            <GradientStop Offset="0" Color="#10b4fd"></GradientStop>
+                            <GradientStop Offset="0.7" Color="#69deff"></GradientStop>
                         </LinearGradientBrush>
                     </Border.Background>
 
@@ -235,7 +235,7 @@
                             </Border.Effect>
                         </Border>
 
-                        <Path x:Name="iconImg" Data="{StaticResource circle-question}" Stretch="Uniform" Fill="White" Margin="18"></Path>
+                        <Path x:Name="iconImg" Data="{StaticResource circle-check}" Stretch="Uniform" Fill="White" Margin="18"></Path>
                     </Grid>
                 </Border>
 
@@ -269,7 +269,7 @@
                        VerticalAlignment="Center"
                        FontFamily="Yu Gothic UI"
                        FontSize="35"
-                       Foreground="#616161"
+                       Foreground="#10b4fd"
                        FontWeight="Bold"
                        Margin="0 0 0 25">
             </TextBlock>
