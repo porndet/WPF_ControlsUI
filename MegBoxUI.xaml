@@ -12,21 +12,267 @@
         Background="Transparent"
         AllowsTransparency="True"
         WindowStyle="None">
-    
-    <Border CornerRadius="12" Background="White">
+
+    <Window.Resources>
+
+        <ResourceDictionary>
+            <PathGeometry x:Key="circle-check" Figures="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-111 111-47-47c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l64 64c9.4 9.4 24.6 9.4 33.9 0L369 209z"></PathGeometry>
+            <PathGeometry x:Key="circle-xmark" Figures="M256 48a208 208 0 1 1 0 416 208 208 0 1 1 0-416zm0 464A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM175 175c-9.4 9.4-9.4 24.6 0 33.9l47 47-47 47c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l47-47 47 47c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-47-47 47-47c9.4-9.4 9.4-24.6 0-33.9s-24.6-9.4-33.9 0l-47 47-47-47c-9.4-9.4-24.6-9.4-33.9 0z"/>
+            <PathGeometry x:Key="circle-question" Figures="M464 256A208 208 0 1 0 48 256a208 208 0 1 0 416 0zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm169.8-90.7c7.9-22.3 29.1-37.3 52.8-37.3l58.3 0c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24l0-13.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1l-58.3 0c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/>
+
+            <LinearGradientBrush x:Key="QuestionColor_Gradient" StartPoint="0,0.5" EndPoint="1,0.5">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStopCollection>
+                        <GradientStop Offset="0" Color="#616161"></GradientStop>
+                        <GradientStop Offset="0.7" Color="#c4c2c2"></GradientStop>
+                    </GradientStopCollection>
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+            <SolidColorBrush x:Key="QuestionColor_Text" Color="#616161"></SolidColorBrush>
+
+
+            <LinearGradientBrush x:Key="SuccessColor_Gradient" StartPoint="0,0.5" EndPoint="1,0.5">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStopCollection>
+                        <GradientStop Offset="0" Color="#10b4fd"></GradientStop>
+                        <GradientStop Offset="0.7" Color="#69deff"></GradientStop>
+                    </GradientStopCollection>
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+            <SolidColorBrush x:Key="SuccessColor_Text" Color="#10b4fd"></SolidColorBrush>
+
+            <LinearGradientBrush x:Key="ErrorColor_Gradient" StartPoint="0,0.5" EndPoint="1,0.5">
+                <LinearGradientBrush.GradientStops>
+                    <GradientStopCollection>
+                        <GradientStop Offset="0" Color="#b91717"></GradientStop>
+                        <GradientStop Offset="0.7" Color="#f8586e"></GradientStop>
+                    </GradientStopCollection>
+                </LinearGradientBrush.GradientStops>
+            </LinearGradientBrush>
+            <SolidColorBrush x:Key="ErrorColor_Text" Color="#b91717"></SolidColorBrush>
+
+            <Style x:Key="ButtonStyle.OKButtonMegUI" TargetType="{x:Type Button}">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontWeight" Value="SemiBold"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Cursor" Value="Hand"></Setter>
+                <Setter Property="Opacity" Value="0.7"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border CornerRadius="8">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                        <GradientStop Offset="0" Color="#2bc253"></GradientStop>
+                                        <GradientStop Offset="0.7" Color="#068c2a"></GradientStop>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <Grid>
+                                    <Border CornerRadius="8" 
+                                            BorderThickness="0 0 0.8 0.8" 
+                                            BorderBrush="Black"
+                                            Margin="-0.5">
+                                        <Border.Effect>
+                                            <BlurEffect Radius="3" KernelType="Gaussian"></BlurEffect>
+                                        </Border.Effect>
+                                    </Border>
+
+                                    <Border CornerRadius="8" 
+                                            BorderThickness="0.8 0.8 0 0" 
+                                            BorderBrush="White"
+                                            Margin="1.5">
+                                        <Border.Effect>
+                                            <BlurEffect Radius="4" KernelType="Gaussian"></BlurEffect>
+                                        </Border.Effect>
+                                    </Border>
+
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
+                                </Grid>
+                            </Border>
+
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="FontSize"
+                                                                 To="21" Duration="0:0:0.5"/>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                 To="0.95" Duration="0:0:0.5"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="FontSize"
+                                                                 Duration="0:0:0.5"/>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                 Duration="0:0:0.5"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                            
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+            <Style x:Key="ButtonStyle.CancelButtonMegUI" TargetType="{x:Type Button}">
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="FontWeight" Value="SemiBold"></Setter>
+                <Setter Property="Foreground" Value="White"></Setter>
+                <Setter Property="Cursor" Value="Hand"></Setter>
+                <Setter Property="Opacity" Value="0.7"/>
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Button}">
+                            <Border CornerRadius="8">
+                                <Border.Background>
+                                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                                        <GradientStop Offset="0" Color="#eb461d"></GradientStop>
+                                        <GradientStop Offset="0.7" Color="#f06746"></GradientStop>
+                                    </LinearGradientBrush>
+                                </Border.Background>
+
+                                <Grid>
+                                    <Border CornerRadius="8" 
+                                            BorderThickness="0 0 0.8 0.8" 
+                                            BorderBrush="Black"
+                                            Margin="-0.5">
+                                        <Border.Effect>
+                                            <BlurEffect Radius="3" KernelType="Gaussian"></BlurEffect>
+                                        </Border.Effect>
+                                    </Border>
+
+                                    <Border CornerRadius="8" 
+                                            BorderThickness="0.8 0.8 0 0" 
+                                            BorderBrush="White"
+                                            Margin="1.5">
+                                        <Border.Effect>
+                                            <BlurEffect Radius="4" KernelType="Gaussian"></BlurEffect>
+                                        </Border.Effect>
+                                    </Border>
+
+                                    <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"></ContentPresenter>
+                                </Grid>
+                            </Border>
+                            <ControlTemplate.Triggers>
+                                <Trigger Property="IsMouseOver" Value="True">
+                                    <Trigger.EnterActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="FontSize"
+                                                                 To="20" Duration="0:0:0.5"/>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                 To="0.95" Duration="0:0:0.5"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.EnterActions>
+                                    <Trigger.ExitActions>
+                                        <BeginStoryboard>
+                                            <Storyboard>
+                                                <DoubleAnimation Storyboard.TargetProperty="FontSize"
+                                                                 Duration="0:0:0.5"/>
+                                                <DoubleAnimation Storyboard.TargetProperty="Opacity"
+                                                                 Duration="0:0:0.5"/>
+                                            </Storyboard>
+                                        </BeginStoryboard>
+                                    </Trigger.ExitActions>
+                                </Trigger>
+                            </ControlTemplate.Triggers>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Border CornerRadius="8" Background="White">
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height=".4*"></RowDefinition>
+                <RowDefinition Height=".5*"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
-            
+
+            <Border Grid.Row="0" Background="White" CornerRadius="8 8 0 0"></Border>
+
             <Grid Grid.Row="0" Grid.RowSpan="2" Background="Transparent">
-                <Border Background="Blue" Margin="0 90 0 15"></Border>
-                <Border CornerRadius="99" Width="50" Height="50" Background="Red" Margin="0 0 0 120"></Border>
+                <Border x:Name="BdText" Margin="0 110 0 10">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                            <GradientStop Offset="0" Color="#616161"></GradientStop>
+                            <GradientStop Offset="0.7" Color="#c4c2c2"></GradientStop>
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Border.Effect>
+                        <BlurEffect Radius="2" KernelType="Gaussian"></BlurEffect>
+                    </Border.Effect>
+                </Border>
+                <Border x:Name="BdIcon" CornerRadius="99" Width="75" Height="75" Margin="0 0 0 90" BorderBrush="White" BorderThickness="0">
+                    <Border.Background>
+                        <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                            <GradientStop Offset="0" Color="#616161"></GradientStop>
+                            <GradientStop Offset="0.7" Color="#c4c2c2"></GradientStop>
+                        </LinearGradientBrush>
+                    </Border.Background>
+
+                    <Grid>
+                        <Border CornerRadius="99" Margin="-2" Background="Transparent" BorderBrush="Black" BorderThickness="0 0 0 1.5">
+                            <Border.Effect>
+                                <BlurEffect Radius="3" KernelType="Gaussian"></BlurEffect>
+                            </Border.Effect>
+                        </Border>
+
+                        <Border CornerRadius="99" Margin="1" Background="Transparent" BorderBrush="White" BorderThickness="0 0.8 0.8 0">
+                            <Border.Effect>
+                                <BlurEffect Radius="3" KernelType="Gaussian"></BlurEffect>
+                            </Border.Effect>
+                        </Border>
+
+                        <Path x:Name="iconImg" Data="{StaticResource circle-question}" Stretch="Uniform" Fill="White" Margin="18"></Path>
+                    </Grid>
+                </Border>
+
+                <Grid Margin="20 150 20 20" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="35px"></RowDefinition>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Hello world das;ldma;ldm ;lwmad;wam;l 123123opj0532j432ms"
+                       TextWrapping="Wrap"
+                       FontFamily="Yu Gothic UI"
+                       FontSize="18"
+                       TextAlignment="Center"
+                       Foreground="#f0f0f0"
+                       Grid.Row="0">
+                    </TextBlock>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Button x:Name="Btnok" Style="{StaticResource ButtonStyle.OKButtonMegUI}" Content="OK" Width="65" Height="35" Margin="0 0 20 0"></Button>
+                        <Button x:Name="Btncancel" Style="{StaticResource ButtonStyle.CancelButtonMegUI}" Content="Cancel" Width="85" Height="35"></Button>
+                    </StackPanel>
+                </Grid>
+
             </Grid>
 
-            <!--<Border Grid.Row="0" Background="White"></Border>-->
-            <TextBlock Grid.Row="0" Text="Success" Background="White" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+            <TextBlock x:Name="TitleText" Grid.Row="0" 
+                       Text="Question" 
+                       Background="Transparent" 
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontFamily="Yu Gothic UI"
+                       FontSize="35"
+                       Foreground="#616161"
+                       FontWeight="Bold"
+                       Margin="0 0 0 25">
+            </TextBlock>
 
         </Grid>
     </Border>
